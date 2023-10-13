@@ -34,4 +34,16 @@ public class UserController {
     public ResponseEntity<UserDto> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(userService.findById(id));
     }
+
+    @PutMapping(value = ID, produces="application/json", consumes="application/json")
+    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody @Valid UserDto usuarioDto) {
+        userService.update(usuarioDto, id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = ID)
+    public ResponseEntity<UserDto> delete(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

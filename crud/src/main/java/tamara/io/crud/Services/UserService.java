@@ -33,4 +33,16 @@ public class UserService {
         if (!userRepository.existsById(id)) throw new RuntimeException("User not found");
         return mapper.map(userRepository.findById(id), UserDto.class);
     }
+
+    public UserDto update(UserDto userDto, Long id) {
+        findById(id);
+        userDto.setId(id);
+        final var usuarioSalvo = userRepository.save(mapper.map(userDto, UserModel.class));
+        return mapper.map(usuarioSalvo, UserDto.class);
+    }
+
+    public void delete(Long id) {
+        findById(id);
+        userRepository.deleteById(id);
+    }
 }
