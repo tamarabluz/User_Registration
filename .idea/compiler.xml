@@ -10,5 +10,9 @@
         <module name="crud.crud.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="crud.crud.main~1" target="17" />
+      <module name="crud.crud.test~1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
